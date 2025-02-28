@@ -1,14 +1,6 @@
 package main
 
-import (
-	"errors"
-
-	"github.com/mgwinsor/gator/internal/config"
-)
-
-type state struct {
-	cfg *config.Config
-}
+import "errors"
 
 type command struct {
 	Name string
