@@ -43,7 +43,7 @@ func Read() (Config, error) {
 func getConfigFilePath() (string, error) {
 	dir, err := os.UserHomeDir()
 	if err != nil {
-		return fmt.Errorf("couldn't delete users: %w", err)
+		return "", err
 	}
 	configPath := filepath.Join(dir, ".config", "gator", configFileName)
 	return configPath, nil

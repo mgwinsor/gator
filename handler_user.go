@@ -43,7 +43,7 @@ func handlerRegister(s *state, cmd command) error {
 		Name:      name,
 	})
 	if err != nil {
-		return fmt.Errorf("couldn't create user: %w", err)
+		return fmt.Errorf("could not create user: %w", err)
 	}
 
 	err = s.cfg.SetUser(user.Name)
@@ -53,6 +53,22 @@ func handlerRegister(s *state, cmd command) error {
 
 	fmt.Println("User created successfully:")
 	printUser(user)
+	return nil
+}
+
+func handlerUsers(s *state, cmd command) error {
+	users, err := s.db.GetUsers(context.Background())
+	if err != nil {
+		return fmt.Errorf("could not get all users: %w", err)
+	}
+
+	for _, user := range users {
+		if user.Name == s.cfg.CurrentUserName {
+			fmt.Printf("* %v (current)\n", user.Name)
+		} else {
+			fmt.Printf("* %s\n", user.Name)
+		}
+	}
 	return nil
 }
 
