@@ -158,6 +158,7 @@ func printFeed(feed database.Feed, user database.User) {
 	fmt.Printf("* URL:		%s\n", feed.Url)
 	fmt.Printf("* User ID:		%s\n", feed.UserID)
 	fmt.Printf("* User:		%s\n", user.ID)
+	fmt.Printf("* LastFetchedAt	%v\n", feed.LastFetchedAt.Time)
 }
 
 func printFeedFollow(username, feedname string) {
